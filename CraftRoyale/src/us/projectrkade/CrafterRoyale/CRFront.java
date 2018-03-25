@@ -36,6 +36,11 @@ public class CRFront extends JavaPlugin {
 		}
 //		Create a new YamlConfiguration object by loading a configuration of the config file
 		YamlConfiguration conYAML = YamlConfiguration.loadConfiguration(config);
+//		Check to see if conYAML contains a "lobbies" section
+		if(!conYAML.contains("lobbies")) {
+//			Create a "lobbies" section inside of conYAML
+			conYAML.createSection("lobbies");
+		}
 //		Try to save the new conYAML configuration into the config file
 		try {
 			conYAML.save(config);
