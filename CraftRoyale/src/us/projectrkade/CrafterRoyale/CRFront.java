@@ -11,6 +11,7 @@ public class CRFront extends JavaPlugin {
 	
 	public static File plugDir;
 	public static File config;
+	public static File settings;
 	
 //	onEnable() method invoke on plugin enable
 	public void onEnable() {
@@ -38,6 +39,27 @@ public class CRFront extends JavaPlugin {
 //		Try to save the new conYAML configuration into the config file
 		try {
 			conYAML.save(config);
+		} catch (IOException e) {
+//			Print error message to console
+			System.out.println(e.getMessage());
+		}
+//		Set the settingsFile object to a new file called "settings.yml" inside of the plugin directory
+		settings = new File(plugDir.getPath() + File.separator + "settings.yml");
+//		Check to see if a file or directory matching the settings File object path exists
+		if(!settings.exists()) {
+//			Try to create a new file out of the new settings File object
+			try {
+				settings.createNewFile();
+			} catch (IOException e) {
+//				Print error message to console
+				System.out.println(e.getMessage());
+			}
+		}
+//		Create a new YamlConfiguration object by loading a configuration of the settings file
+		YamlConfiguration setYAML = YamlConfiguration.loadConfiguration(config);
+//		Try to save the new setYAML configuration into the config file
+		try {
+			setYAML.save(settings);
 		} catch (IOException e) {
 //			Print error message to console
 			System.out.println(e.getMessage());
