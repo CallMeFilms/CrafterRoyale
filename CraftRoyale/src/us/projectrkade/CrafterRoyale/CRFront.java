@@ -29,7 +29,7 @@ public class CRFront extends JavaPlugin {
 		try {
 			conYAML.save(config);
 		} catch (IOException e) {
-			System.out.out.println(e.getMessage());
+			System.out.println(e.getMessage());
 		}
 	}
 	
