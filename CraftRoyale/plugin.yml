@@ -1,0 +1,7 @@
+name: CrafterRoyale
+version: 1.0
+main: us.projectrkade.CrafterRoyale.CRFront
+authors: [CallMeFilms, HyperionLegion, CrackLikeAl3o$$]
+commands:
+ cr:
+  description: Base command for CrafterRoyale
