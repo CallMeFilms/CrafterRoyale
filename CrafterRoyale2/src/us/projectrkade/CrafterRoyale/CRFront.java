@@ -1,4 +1,4 @@
-package us.projectrkade.CrafterRoyale;
+package us.projectrkade.CrafterRoyale2;
 
 import java.io.File;
 import java.io.IOException;
@@ -7,6 +7,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import src.Commands;
 
 public class CRFront extends JavaPlugin {
 	

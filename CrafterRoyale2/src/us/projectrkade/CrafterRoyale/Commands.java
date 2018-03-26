@@ -1,4 +1,4 @@
-package us.projectrkade.CrafterRoyale;
+package src;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -6,6 +6,8 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
+
+import us.projectrkade.CrafterRoyale2.CRFront;
 
 public class Commands implements CommandExecutor{
 
