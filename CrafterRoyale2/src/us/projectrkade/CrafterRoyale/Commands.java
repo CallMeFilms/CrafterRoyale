@@ -1,4 +1,6 @@
-package src;
+package us.projectrkade.CrafterRoyale;
+
+import java.io.IOException;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -6,8 +8,6 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
-
-import us.projectrkade.CrafterRoyale2.CRFront;
 
 public class Commands implements CommandExecutor{
 
@@ -62,7 +62,7 @@ public class Commands implements CommandExecutor{
 //						/cr admin lobby create <name>
 						String toCreate = args[3];
 						if(setYAML.contains("lobbies." + toCreate)) {
-							sndr.sendMessage(CRFront.prefix + ChatColor.RED + " Lobby " + ChatColor.DARK_RED + toCreate + " already exists.");
+							sndr.sendMessage(CRFront.prefix + ChatColor.DARK_RED + " Lobby " + ChatColor.RED + toCreate + ChatColor.DARK_RED + " already exists.");
 							return true;
 						}
 						setYAML.createSection("lobbies." + toCreate);
@@ -72,7 +72,12 @@ public class Commands implements CommandExecutor{
 						setYAML.set("lobbies." + toCreate + ".location.z", player.getLocation().getZ());
 						setYAML.set("lobbies." + toCreate + ".location.yaw", player.getLocation().getYaw());
 						setYAML.set("lobbies." + toCreate + ".location.pitch", player.getLocation().getPitch());
-						sndr.sendMessage(CRFront.prefix + ChatColor.DARK_RED + " Lobby " + ChatColor.DARK_RED + toCreate + " created.");
+						try {
+							setYAML.save(CRFront.settings);
+						} catch (IOException e) {
+							System.out.println(e.getMessage());
+						}
+						sndr.sendMessage(CRFront.prefix + ChatColor.DARK_RED + " Lobby " + ChatColor.RED + toCreate + ChatColor.DARK_RED + " created.");
 						break;
 					case "remove":
 						if(!sndr.hasPermission("cr.admin.lobby.remove")) {
@@ -85,11 +90,16 @@ public class Commands implements CommandExecutor{
 						}
 						String toRemove = args[3];
 						if(!setYAML.contains("lobbies." + toRemove)) {
-							sndr.sendMessage(CRFront.prefix + ChatColor.RED + " Lobby" + ChatColor.DARK_RED + toRemove + " does not exist.");
+							sndr.sendMessage(CRFront.prefix + ChatColor.DARK_RED + " Lobby " + ChatColor.RED + toRemove + ChatColor.DARK_RED + " does not exist.");
 							return true;
 						}
-						setYAML.set("lobbies." + toRemove, "");
-						sndr.sendMessage(CRFront.prefix + ChatColor.DARK_RED + " Lobby " + ChatColor.DARK_RED + toRemove + " created.");
+						setYAML.set("lobbies." + toRemove, null);
+						try {
+							setYAML.save(CRFront.settings);
+						} catch (IOException e) {
+							System.out.println(e.getMessage());
+						}
+						sndr.sendMessage(CRFront.prefix + ChatColor.DARK_RED + " Lobby " + ChatColor.RED + toRemove + ChatColor.DARK_RED + " removed.");
 						break;
 					}
 				}
