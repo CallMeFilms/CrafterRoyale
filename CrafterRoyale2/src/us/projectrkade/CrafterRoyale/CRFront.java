@@ -73,6 +73,7 @@ public class CRFront extends JavaPlugin {
 				System.out.println(e.getMessage());
 			}
 		}
+//		Set executor for "/cr" command to new instance of Commands class
 		Bukkit.getServer().getPluginCommand("cr").setExecutor(new Commands());
 	}
 	

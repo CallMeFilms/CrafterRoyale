@@ -5,3 +5,4 @@ authors: [CallMeBlind, CrackLikeAl3o$$, HyperionLegion]
 commands:
  cr:
   description: Base command for CrafterRoyale
+  usage: /cr help
